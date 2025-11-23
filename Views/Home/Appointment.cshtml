@@ -1,0 +1,119 @@
+@{
+    ViewData["Title"] = "Book Appointment - Glamour Beauty";
+}
+<!-- Appointment Header -->
+<section class="hero-section" style="padding: 100px 0; background: linear-gradient(135deg, rgba(255,105,180,0.9), rgba(255,20,147,0.9)), url('https://images.unsplash.com/photo-1515377905703-c4788e51af15?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
+    <div class="container">
+        <h1 class="hero-title">Book Your Appointment</h1>
+        <p class="hero-subtitle">Schedule your beauty session with our expert professionals</p>
+    </div>
+</section>
+<!-- Appointment Form -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="service-card">
+                    <h3 class="text-center mb-4">Fill Appointment Details</h3>
+                    <form id="appointmentForm">
+                        <div class="row g-3">
+                            <!-- Personal Details -->
+                            <div class="col-md-6">
+                                <label for="name" class="form-label">Full Name *</label>
+                                <input type="text" class="form-control" id="name" required placeholder="Enter your full name">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="phone" class="form-label">Phone Number *</label>
+                                <input type="tel" class="form-control" id="phone" required placeholder="Enter your phone number">
+                            </div>
+                            <div class="col-12">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                            </div>
+                            <!-- Service Selection -->
+                            <div class="col-12">
+                                <label for="service" class="form-label">Select Service *</label>
+                                <select class="form-select" id="service" required>
+                                    <option value="">Choose a service...</option>
+                                    <option value="bridal">Bridal Makeup (₹5,000 - ₹25,000)</option>
+                                    <option value="party">Party Makeup (₹2,000 - ₹5,000)</option>
+                                    <option value="facial">Facial Treatment (₹1,500 - ₹5,000)</option>
+                                    <option value="hair">Hair Styling (₹500 - ₹3,000)</option>
+                                    <option value="manicure">Manicure & Pedicure (₹800 - ₹2,500)</option>
+                                    <option value="threading">Threading & Waxing (₹200 - ₹1,500)</option>
+                                </select>
+                            </div>
+                            <!-- Date & Time -->
+                            <div class="col-md-6">
+                                <label for="date" class="form-label">Preferred Date *</label>
+                                <input type="date" class="form-control" id="date" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="time" class="form-label">Preferred Time *</label>
+                                <select class="form-select" id="time" required>
+                                    <option value="">Select time...</option>
+                                    <option value="09:00">09:00 AM</option>
+                                    <option value="10:00">10:00 AM</option>
+                                    <option value="11:00">11:00 AM</option>
+                                    <option value="12:00">12:00 PM</option>
+                                    <option value="14:00">02:00 PM</option>
+                                    <option value="15:00">03:00 PM</option>
+                                    <option value="16:00">04:00 PM</option>
+                                    <option value="17:00">05:00 PM</option>
+                                </select>
+                            </div>
+                            <!-- Additional Info -->
+                            <div class="col-12">
+                                <label for="message" class="form-label">Special Requests (Optional)</label>
+                                <textarea class="form-control" id="message" rows="3" placeholder="Any special requirements or notes..."></textarea>
+                            </div>
+                            <!-- Submit Button -->
+                            <div class="col-12 text-center">
+                                <button type="submit" class="btn btn-glamour btn-lg">
+                                    <i class="fas fa-paper-plane me-2"></i>Book Appointment
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Contact Info -->
+<section class="py-5" style="background-color: var(--light-pink);">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <i class="fas fa-phone fa-2x text-primary mb-3"></i>
+                <h5>Call Us</h5>
+                <p>+91 98765 43210</p>
+            </div>
+            <div class="col-md-4">
+                <i class="fas fa-clock fa-2x text-primary mb-3"></i>
+                <h5>Working Hours</h5>
+                <p>Mon-Sun: 9:00 AM - 8:00 PM</p>
+            </div>
+            <div class="col-md-4">
+                <i class="fas fa-map-marker-alt fa-2x text-primary mb-3"></i>
+                <h5>Visit Us</h5>
+                <p>123 Beauty Street, Your City</p>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Get form values
+        const name = document.getElementById('name').value;
+        const service = document.getElementById('service').options[document.getElementById('service').selectedIndex].text;
+        // Show success message
+        alert(`Thank you ${name}! Your appointment for ${service} has been booked successfully. We will contact you shortly to confirm.`);
+        // Reset form
+        this.reset();
+    });
+    // Set minimum date to today
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('date').min = today;
+</script>
